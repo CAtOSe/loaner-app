@@ -104,7 +104,6 @@ public class MainActivity extends AppCompatActivity implements CreditAdapter.OnC
             this.unpaidCredits.clear();
 
             for (int i = 0; i < newCredits.size(); i++) {
-                System.out.println(newCredits.get(i).payments.get(0).isPaid);
                 if (newCredits.get(i).isPaid()) this.paidCredits.add(newCredits.get(i));
                 else this.unpaidCredits.add(newCredits.get(i));
             }
