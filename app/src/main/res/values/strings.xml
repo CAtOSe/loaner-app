@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Loaner</string>
+    <string name="unpaid">unpaid</string>
+    <string name="unpaid_count">%1$s unpaid</string>
+    <string name="paid">paid</string>
+    <string name="paid_count">%1$s paid</string>
+    <string name="euro_sign">€</string>
+    <string name="comma">,%1$s</string>
+    <string name="create_credit">Create Credit</string>
+    <string name="name">Name</string>
+    <string name="amount">Amount</string>
+    <string name="add_person">ADD PERSON</string>
+    <string name="people">people</string>
+    <string name="edit">Edit</string>
+    <string name="auto">AUTO</string>
+    <string name="delete">Delete</string>
+    <string name="duplicate">Duplicate</string>
+</resources>

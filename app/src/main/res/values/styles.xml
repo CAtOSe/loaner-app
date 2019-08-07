@@ -1,0 +1,24 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorAccent</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorSurface">@color/colorSurface</item>
+    </style>
+
+    <style name="unpaid_bar">
+        <item name="statusColor">@color/design_default_color_error</item>
+    </style>
+
+    <style name="paid_bar" parent="unpaid_bar">
+        <item name="statusColor">@color/colorAccent</item>
+    </style>
+    
+    <style name="FloatingActionButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/colorAccent</item>
+    </style>
+
+</resources>
