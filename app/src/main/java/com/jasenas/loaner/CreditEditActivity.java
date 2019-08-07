@@ -33,6 +33,9 @@ public class CreditEditActivity extends AppCompatActivity implements PeopleAdapt
     private EditText nameInput;
     private EditText amountInput;
 
+    private TextInputLayout nameView;
+    private TextInputLayout amountView;
+
     private CreditManager creditManager;
 
     private Credit credit;
@@ -54,6 +57,8 @@ public class CreditEditActivity extends AppCompatActivity implements PeopleAdapt
 
         this.creditManager = CreditManager.getInstance();
 
+        this.nameView = findViewById(R.id.nameView);
+        this.amountView = findViewById(R.id.amountView);
         this.nameInput = findViewById(R.id.name);
         this.amountInput = findViewById(R.id.amount);
         this.peopleList = findViewById(R.id.peopleList);
@@ -112,12 +117,13 @@ public class CreditEditActivity extends AppCompatActivity implements PeopleAdapt
         saveFab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                updateCredit();
-                try {
-                    creditManager.saveCredit(credit, newCredit);
-                    finish();
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                if(updateCredit()) {
+                    try {
+                        creditManager.saveCredit(credit, newCredit);
+                        finish();
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -144,8 +150,22 @@ public class CreditEditActivity extends AppCompatActivity implements PeopleAdapt
         this.peopleAdapter.notifyDataSetChanged();
     }
 
-    private void updateCredit() {
+    private boolean updateCredit() {
+        if (this.nameInput.getText().toString().equals("")) {
+            this.nameView.setError("Required");
+            this.nameView.setErrorEnabled(true);
+            return false;
+        } else this.nameView.setErrorEnabled(false);
+
+        if (this.amountInput.getText().toString().equals("")) {
+            this.amountView.setError("Required");
+            this.amountView.setErrorEnabled(true);
+            return false;
+        } this.amountView.setErrorEnabled(false);
+
         this.credit.name = nameInput.getText().toString();
         this.credit.amount = (int) (Double.parseDouble(amountInput.getText().toString()) * 100);
+
+        return true;
     }
 }
