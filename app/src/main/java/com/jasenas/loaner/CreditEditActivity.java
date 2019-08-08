@@ -157,13 +157,21 @@ public class CreditEditActivity extends AppCompatActivity implements PeopleAdapt
             return false;
         } else this.nameView.setErrorEnabled(false);
 
+        this.credit.name = nameInput.getText().toString();
+
         if (this.amountInput.getText().toString().equals("")) {
             this.amountView.setError("Required");
             this.amountView.setErrorEnabled(true);
             return false;
         } this.amountView.setErrorEnabled(false);
 
-        this.credit.name = nameInput.getText().toString();
+        if (this.amountInput.getText().toString().equals(".")) {
+            this.amountView.setError("Invalid value");
+            this.amountView.setErrorEnabled(true);
+            this.credit.amount = 0;
+            return false;
+        }
+        
         this.credit.amount = (int) (Double.parseDouble(amountInput.getText().toString()) * 100);
 
         return true;
